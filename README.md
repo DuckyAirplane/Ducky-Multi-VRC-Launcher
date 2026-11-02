@@ -2,7 +2,15 @@
 
 A Windows desktop launcher for multiple VRChat clients, with monitor selection and an automatic grid.
 
-For repository owners: see [easy GitHub upload instructions](GITHUB_SETUP.md).
+## Download and run
+
+**No building or installation is required for the launcher.**
+
+1. At the top of this repository, click **Code > Download ZIP**.
+2. Right-click the downloaded ZIP and choose **Extract All**.
+3. Open the extracted folder and double-click **Ducky Multi VRC Launcher.exe**.
+
+The EXE is included in the ZIP. You need Windows 10/11, .NET Framework 4.x, and the Steam version of VRChat installed. Keep the extracted files in a normal folder; do not run the app from inside the ZIP.
 
 ## Use
 
@@ -41,13 +49,13 @@ The app does not include VRChat or create accounts. It does not change avatar qu
 
 On the development setup, only **three accounts total** (the main account plus two additional accounts) could occupy the same online instance. Further accounts received error **32752** and were redirected to another instance. This remains unresolved and is not established as a universal VRChat limit. This launcher does not guarantee that all opened clients can join the same instance.
 
-The earlier console launcher also created duplicate clients when process identification failed. That implementation and its retry loop have been removed. The desktop replacement enforces a launch budget and never automatically reissues a launch request.
+The launcher issues each launch request once and stops if it cannot safely identify a new client window.
 
 This is an independent project. VRChat also offers [VRC Quick Launcher](https://vcc.docs.vrchat.com/tools/vrc-quick-launcher/).
 
-## Build and test
+## For developers: build and test (optional)
 
-The source is in `src/DuckyLauncher.cs`. Build with Windows PowerShell:
+Regular users can use the included EXE; the steps below are only for people changing the source code. The source is in `src/DuckyLauncher.cs`. Build with Windows PowerShell:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Build.ps1
@@ -68,10 +76,8 @@ For a UI-only preview image (does not start VRChat):
 
 New client logs are saved under `%LOCALAPPDATA%\DuckyMultiVRCLauncher\logs`. Logs may include sensitive account information; do not post raw logs publicly.
 
-Existing development diagnostics are kept locally under `private/`, ignored by Git, and are not needed to run the app. Source, build script, tests, README, and LICENSE belong in the repository. The generated executable is ignored by Git; distribute it separately as a GitHub release asset if desired. No ZIP is required to test the app locally.
+The repository includes the ready-to-run EXE along with its source code, build script, tests, and MIT license. Development diagnostics under `private/` are excluded. For repository owners, see [GitHub upload instructions](GITHUB_SETUP.md).
 
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
-
