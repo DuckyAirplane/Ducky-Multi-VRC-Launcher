@@ -1,0 +1,11 @@
+*.exe
+*.pdb
+*.zip
+self-test-results.txt
+preview.png
+logs/
+private/
+*.log
+*.dmp
+.vscode/
+.idea/
